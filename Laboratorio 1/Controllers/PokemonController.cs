@@ -1,4 +1,5 @@
-﻿using Laboratorio_1.Models;
+﻿using Laboratorio_1.Helpers;
+using Laboratorio_1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,29 +11,15 @@ namespace Laboratorio_1.Controllers
         // GET: PokemonController
         public ActionResult Index()
         {
-            var list = new List<PokemonModel>
-            {
-                new PokemonModel
-                {
-                    Id = 7,
-                    Name = "Squirtle",
-                    HP = 44,
-                    Attack = 48,
-                    Defense = 65,
-                    SpecialAttack = 50,
-                    SpecialDefense = 64,
-                    Speed = 43
-                }
-            };
-            return View(list);
+            
+            return View(Data.Instance.pokemonList);
         }
 
         // GET: PokemonController/Details/5
         public ActionResult Details(int id)
         {
-
-            //var model = list[id];
-            return View();
+            var model = Data.Instance.pokemonList.Find(pokemon => pokemon.Id == id);
+            return View(model);
         }
 
         // GET: PokemonController/Create
@@ -48,10 +35,28 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = PokemonModel.Save(new PokemonModel
+                {
+                    Id = int.Parse(collection["Id"]),
+                    Name = collection["Name"],
+                    HP = int.Parse(collection["HP"]),
+                    Attack = int.Parse(collection["Attack"]),
+                    Defense = int.Parse(collection["Defense"]),
+                    SpecialAttack = int.Parse(collection["SpecialAttack"]),
+                    SpecialDefense = int.Parse(collection["SpecialDefense"]),
+                    Speed = int.Parse(collection["Speed"]),
+                });
+
+                if (response)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewBag["Error"] = "Error while creating new element";
+                return View();
             }
             catch
             {
+
                 return View();
             }
         }
@@ -59,7 +64,8 @@ namespace Laboratorio_1.Controllers
         // GET: PokemonController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = Data.Instance.pokemonList.Find(pokemon => pokemon.Id == id);
+            return View(model);
         }
 
         // POST: PokemonController/Edit/5
@@ -80,6 +86,7 @@ namespace Laboratorio_1.Controllers
         // GET: PokemonController/Delete/5
         public ActionResult Delete(int id)
         {
+            var model = Data.Instance.pokemonList.Find(pokemon => pokemon.Id == id);
             return View();
         }
 
