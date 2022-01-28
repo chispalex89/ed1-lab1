@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Laboratorio_1.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Laboratorio_1.Controllers
 {
@@ -12,7 +14,18 @@ namespace Laboratorio_1.Controllers
         // GET: FnafController
         public ActionResult Index()
         {
-            return View();
+            var list = new List<FnafModel>();
+
+            list.Add(new FnafModel
+            {
+                Game = "FNAF 1",
+                Name = "Freddy Fazbear",
+                Frecuency = 20,
+                Attack = 100,
+                Speed = 10,
+
+            });
+            return View(list);
         }
 
         // GET: FnafController/Details/5
