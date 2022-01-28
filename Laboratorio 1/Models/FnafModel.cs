@@ -13,5 +13,6 @@ namespace Laboratorio_1.Models
         public int Attack { get; set; }
         public int Speed { get; set; }
         public int Frecuency { get; set; }
+
     }
 }
