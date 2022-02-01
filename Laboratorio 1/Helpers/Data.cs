@@ -36,5 +36,18 @@ namespace Laboratorio_1.Helpers
                 Speed = 43
             }
         };
+
+        public List<NBAModel> nbaList = new List<NBAModel>
+        {
+            new NBAModel
+            {
+                Equipo = 1,
+                Base = "James Harden",
+                Escolta = "Blake Griffin",
+                Alero = "Kyrie Irving",
+                AlaPivot = "Kevin Durant",
+                Pivot = "Nicolas Claxton"
+            }
+        };
     }
 }
