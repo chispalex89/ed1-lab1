@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Pivot)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Equipo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Equipo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Equipo })
             </td>
         </tr>
 }

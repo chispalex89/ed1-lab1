@@ -1,4 +1,5 @@
-﻿using Laboratorio_1.Models;
+﻿using Laboratorio_1.Helpers;
+using Laboratorio_1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,31 +11,20 @@ namespace Laboratorio_1.Controllers
         // GET: NBAController
         public ActionResult Index()
         {
-            var list = new List<NBAModel>
-            {
-                new NBAModel
-                {
-                    Equipo = "Brooklyn Nets",
-                    Base = "James Harden",
-                    Escolta = "Blake Griffin",
-                    Alero = "Kyrie Irving",
-                    AlaPivot = "Kevin Durant",
-                    Pivot = "Nicolas Claxton"
-                }
-            };
-            return View(list);
+            return View(Data.Instance.nbaList);
         }
 
         // GET: NBAController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = Data.Instance.nbaList.Find(nba => nba.Equipo == id);
+            return View(model);
         }
 
         // GET: NBAController/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new NBAModel());
         }
 
         // POST: NBAController/Create
@@ -44,7 +34,21 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = NBAModel.Save(new NBAModel
+                {
+                    Equipo = int.Parse(collection["Equipo"]),
+                    Base = collection["Base"],
+                    Escolta = collection["Escolta"],
+                    Alero = collection["Alero"],
+                    AlaPivot = collection["AlaPivot"],
+                    Pivot = collection["Pivot"],
+                });
+
+                if(response)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
@@ -76,6 +80,7 @@ namespace Laboratorio_1.Controllers
         // GET: NBAController/Delete/5
         public ActionResult Delete(int id)
         {
+            var model = Data.Instance.nbaList.Find(nba => nba.Equipo == id);
             return View();
         }
 
