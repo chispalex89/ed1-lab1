@@ -1,4 +1,5 @@
-﻿using Laboratorio_1.Models;
+﻿using Laboratorio_1.Helpers;
+using Laboratorio_1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,24 +14,14 @@ namespace Laboratorio_1.Controllers
         // GET: Persona5Controller
         public ActionResult Index()
         {
-            var list = new List<Persona5Model>();
-            list.Add(new Persona5Model
-            {
-                Id = "Fool",
-                Name = "Arsène",
-                Strenght = 24,
-                Magic = 24,
-                EnduranceOrVitality = 24,
-                Agility = 39,
-                Luck = 10,
-            });
-            return View(list);
+            return View(DataPersona5.Instance.Persona5List);
         }
 
         // GET: Persona5Controller/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var model = DataPersona5.Instance.Persona5List.Find(Persona5 => Persona5.Id == id);
+            return View(model);
         }
 
         // GET: Persona5Controller/Create
@@ -46,6 +37,16 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
+                Persona5Model.Save(new Persona5Model
+                {
+                    Id = (collection["Id"]),
+                    Name = collection["Name"],
+                    Strenght = int.Parse(collection["Strenght"]),
+                    Magic = int.Parse(collection["Magic"]),
+                    EnduranceOrVitality = int.Parse(collection["EnduranceOrVitality"]),
+                    Agility = int.Parse(collection["Agility"]),
+                    Luck = int.Parse(collection["Luck"])
+                });
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -76,8 +77,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: Persona5Controller/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
+            var model = DataPersona5.Instance.Persona5List.Find(Persona5 => Persona5.Id == id);
             return View();
         }
 
