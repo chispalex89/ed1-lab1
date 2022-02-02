@@ -12,7 +12,6 @@ namespace Laboratorio_1.Models
         public double Duracion { get; set; }
         public string Genero { get; set; }
         public string Director { get; set; }
-        public List<string> Actores { get; set; }
         public bool Disponibilidad { get; set; }
     }
 }
