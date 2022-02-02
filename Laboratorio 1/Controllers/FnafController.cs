@@ -44,7 +44,24 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = FnafModel.Save(new FnafModel
+                {
+                    Game = (collection["Game"]),
+                    Name = collection["Name"],
+                    Speed = int.Parse(collection["Speed"]),
+                    Attack = int.Parse(collection["Attack"]),
+                    Frecuency = int.Parse(collection["Frecuency"])
+                });
+
+                if (response)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                
+                
+                return View();
+                
+
             }
             catch
             {
@@ -53,9 +70,11 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: FnafController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var model = Data.Instance.fnafList.Find(fnaf => fnaf.Game == id);
+
+            return View(model);
         }
 
         // POST: FnafController/Edit/5
@@ -74,8 +93,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: FnafController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
+            var model = Data.Instance.fnafList.Find(fnaf => fnaf.Game == id);
             return View();
         }
 
