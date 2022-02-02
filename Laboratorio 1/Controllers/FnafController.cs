@@ -11,29 +11,31 @@ namespace Laboratorio_1.Controllers
 {
     public class FnafController : Controller
     {
-        public  List<FnafModel> list = new List<FnafModel>
-        {
-            new FnafModel
-            {
-                Game = "FNAF 1",
-                Name = "Freddy Fazbear",
-                Frecuency = 20,
-                Attack = 100,
-                Speed = 10,
-            }
-        };
+        
 
         // GET: FnafController
         public ActionResult Index()
         {
+            var list = new List<FnafModel>
+            {
+                new FnafModel
+                {
+                    Game = "FNAF 1",
+                    Name = "Freddy Fazbear",
+                    Frecuency = 20,
+                    Attack = 100,
+                    Speed = 10,
+                }
+            };
+
             return View(list);
         }
 
         // GET: FnafController/Details/5
         public ActionResult Details(int id)
         {
-            var model = list[id];
-            return View(model);
+            //var model = list[id];
+            return View();
         }
 
         // GET: FnafController/Create
