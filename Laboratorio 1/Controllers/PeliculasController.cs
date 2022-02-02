@@ -1,4 +1,5 @@
-﻿using Laboratorio_1.Models;
+﻿using Laboratorio_1.Helpers;
+using Laboratorio_1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,38 +14,21 @@ namespace Laboratorio_1.Controllers
         // GET: PeliculasController
         public ActionResult Index()
         {
-            var lPeliculas = new List<PeliculaModel>();
-            lPeliculas.Add(new PeliculaModel
-            {
-                Nombre = "1917",
-                AñoPublicacion = 2019,
-                Duracion = 119,
-                Genero = "Suspenso",
-                Director = "Sam Mendez",
-                Disponibilidad = true
-            });
-            lPeliculas.Add(new PeliculaModel
-            {
-                Nombre = "Truman Show: historia de una vida",
-                AñoPublicacion = 1998,
-                Duracion = 103,
-                Genero = "Comedia Dramática",
-                Director = "Peter Weir",
-                Disponibilidad = false
-            });
-            return View(lPeliculas);
+           
+            return View(DataPelicula.Instancia.lPeliculas);
         }
 
         // GET: PeliculasController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.Nombre == id);
+            return View(modelo);
         }
 
         // GET: PeliculasController/Create
         public ActionResult Create()
         {
-            return View(new PokemonModel());
+            return View(new PeliculaModel());
         }
 
         // POST: PeliculasController/Create
@@ -54,6 +38,15 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
+                PeliculaModel.Guardar(new PeliculaModel
+                {
+                    Nombre = collection["Nombre"],
+                    AñoPublicacion = int.Parse(collection["AñoPublicacion"]),
+                    Duracion = int.Parse(collection["Duracion"]),
+                    Genero = collection["Genero"],
+                    Director = collection["Director"],
+                    Disponibilidad = Convert.ToBoolean(collection["Disponibilidad"])
+                });
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,6 +68,7 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
+                
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,8 +78,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: PeliculasController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
+            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.Nombre == id);
             return View();
         }
 

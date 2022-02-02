@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratorio_1.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +14,15 @@ namespace Laboratorio_1.Models
         public string Genero { get; set; }
         public string Director { get; set; }
         public bool Disponibilidad { get; set; }
+
+        public static void Guardar(PeliculaModel Pelicula)
+        {
+            DataPelicula.Instancia.lPeliculas.Add(Pelicula);
+        }
+
+        public static bool Editar(PeliculaModel Pelicula)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
