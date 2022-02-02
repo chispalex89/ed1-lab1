@@ -37,7 +37,7 @@ namespace Laboratorio_1.Helpers
             }
         };
 
-        public List<FnafModel> FnafList = new List<FnafModel>
+        public List<FnafModel> fnafList = new List<FnafModel>
         {
             new FnafModel
             {

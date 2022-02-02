@@ -11,7 +11,6 @@ namespace Laboratorio_1.Controllers
         // GET: PokemonController
         public ActionResult Index()
         {
-            
             return View(Data.Instance.pokemonList);
         }
 

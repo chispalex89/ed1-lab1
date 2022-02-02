@@ -1,5 +1,7 @@
 ﻿using Laboratorio_1.Models;
+
 using Microsoft.AspNetCore.Http;
+using Laboratorio_1.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,14 +20,15 @@ namespace Laboratorio_1.Controllers
         {
            
 
-            return View();
+            return View(Data.Instance.fnafList);
         }
 
         // GET: FnafController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            //var model = list[id];
-            return View();
+            var model = Data.Instance.fnafList.Find(fnaf => fnaf.Game == id);
+
+            return View(model);
         }
 
         // GET: FnafController/Create
