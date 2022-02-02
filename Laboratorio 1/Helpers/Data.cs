@@ -36,5 +36,18 @@ namespace Laboratorio_1.Helpers
                 Speed = 43
             }
         };
+
+        public List<FnafModel> FnafList = new List<FnafModel>
+        {
+            new FnafModel
+            {
+                Game = "FNAF 1",
+                Name = "Freddy Fazbear",
+                Attack = 10,
+                Speed = 5,
+                Frecuency = 3,
+
+            }
+        };
     }
 }

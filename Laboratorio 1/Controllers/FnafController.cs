@@ -16,19 +16,9 @@ namespace Laboratorio_1.Controllers
         // GET: FnafController
         public ActionResult Index()
         {
-            var list = new List<FnafModel>
-            {
-                new FnafModel
-                {
-                    Game = "FNAF 1",
-                    Name = "Freddy Fazbear",
-                    Frecuency = 20,
-                    Attack = 100,
-                    Speed = 10,
-                }
-            };
+           
 
-            return View(list);
+            return View();
         }
 
         // GET: FnafController/Details/5
