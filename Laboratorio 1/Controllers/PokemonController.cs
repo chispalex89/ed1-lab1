@@ -75,6 +75,16 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
+                PokemonModel.Edit(id, new PokemonModel
+                {
+                    Name = collection["Name"],
+                    HP = int.Parse(collection["HP"]),
+                    Attack = int.Parse(collection["Attack"]),
+                    Defense = int.Parse(collection["Defense"]),
+                    SpecialAttack = int.Parse(collection["SpecialAttack"]),
+                    SpecialDefense = int.Parse(collection["SpecialDefense"]),
+                    Speed = int.Parse(collection["Speed"]),
+                });
                 return RedirectToAction(nameof(Index));
             }
             catch
