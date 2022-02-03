@@ -49,5 +49,18 @@ namespace Laboratorio_1.Helpers
                 Pivot = "Nicolas Claxton"
             }
         };
+
+        public List<AnimalCrossingModel> animalcrossingList = new List<AnimalCrossingModel>
+        {
+            new AnimalCrossingModel
+            {
+                Name = "Kelly",
+                Fruit = "Peach",
+                Insects = 48,
+                Animals = 20,
+                Tricks = 12,
+                Emotions = 2
+            }
+        };
     }
 }
