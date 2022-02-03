@@ -8,6 +8,7 @@ namespace Laboratorio_1.Models
 {
     public class PeliculaModel
     {
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public int AñoPublicacion { get; set; }
         public double Duracion { get; set; }

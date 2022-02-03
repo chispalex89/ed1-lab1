@@ -40,6 +40,7 @@ namespace Laboratorio_1.Controllers
             {
                 PeliculaModel.Guardar(new PeliculaModel
                 {
+                    ID = int.Parse(collection["ID"]),
                     Nombre = collection["Nombre"],
                     AñoPublicacion = int.Parse(collection["AñoPublicacion"]),
                     Duracion = int.Parse(collection["Duracion"]),

@@ -25,6 +25,7 @@ namespace Laboratorio_1.Helpers
             {
                 new PeliculaModel
                 {
+                    ID = 1,
                     Nombre = "1917",
                     AñoPublicacion = 2019,
                     Duracion = 119,
@@ -34,6 +35,7 @@ namespace Laboratorio_1.Helpers
                 },
                 new PeliculaModel
                 {
+                    ID = 2,
                     Nombre = "Truman Show: historia de una vida",
                     AñoPublicacion = 1998,
                     Duracion = 103,
