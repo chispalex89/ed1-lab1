@@ -1,4 +1,4 @@
-﻿using Laboratorio_1.Models;
+﻿using Lab_1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Laboratorio_1.Controllers
+namespace Lab_1.Controllers
 {
     public class HomeController : Controller
     {

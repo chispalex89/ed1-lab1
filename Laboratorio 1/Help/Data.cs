@@ -1,16 +1,14 @@
-﻿using Lab_1.Help;
-using Laboratorio_1.Models;
+﻿using Lab_1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Laboratorio_1.Helpers
+namespace Lab_1.Help
 {
     public class Data
     {
         private static Data _instance = null;
-
         public static Data Instance
         {
             get
@@ -23,21 +21,6 @@ namespace Laboratorio_1.Helpers
             }
         }
 
-        public List<PokemonModel> pokemonList = new List<PokemonModel>
-        {
-            new PokemonModel
-            {
-                Id = 7,
-                Name = "Squirtle",
-                HP = 44,
-                Attack = 48,
-                Defense = 65,
-                SpecialAttack = 50,
-                SpecialDefense = 64,
-                Speed = 43
-            }
-        };
-
         public List<Pokem> pokemonlist = new List<Pokem>
         {
             new Pokem
@@ -48,8 +31,6 @@ namespace Laboratorio_1.Helpers
                 Type = "Grass - Poison"
             }
         };
-
-
 
     }
 }
