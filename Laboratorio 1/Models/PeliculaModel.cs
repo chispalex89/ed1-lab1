@@ -21,9 +21,19 @@ namespace Laboratorio_1.Models
             DataPelicula.Instancia.lPeliculas.Add(Pelicula);
         }
 
-        public static bool Editar(PeliculaModel Pelicula)
+        public static bool Editar(PeliculaModel Pelicula, int ID)
         {
-            throw new NotImplementedException();
+            var lugar = DataPelicula.Instancia.lPeliculas.FindIndex(pelicula => pelicula.ID == ID);
+            DataPelicula.Instancia.lPeliculas[lugar] = new PeliculaModel
+            {
+                Nombre = Pelicula.Nombre,
+                AñoPublicacion = Pelicula.AñoPublicacion,
+                Duracion = Pelicula.Duracion,
+                Genero = Pelicula.Genero,
+                Director = Pelicula.Director,
+                Disponibilidad = Pelicula.Disponibilidad
+            };
+            return true;
         }
     }
 }
