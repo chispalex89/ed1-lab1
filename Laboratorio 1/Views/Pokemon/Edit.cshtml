@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editing Pokémon @Html.DisplayFor(model => Model.Id)</h1>
 
-<h4>PokemonModel</h4>
+<h4>@Html.DisplayFor(model => Model.Name)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
+                @Html.DisplayFor(model => Model.Id)
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
