@@ -49,5 +49,17 @@ namespace Laboratorio_1.Helpers
                 Pivot = "Nicolas Claxton"
             }
         };
+
+        public List<Dogmodel> DogList = new List<Dogmodel>
+        {
+            new Dogmodel
+            {
+                Id = 1,
+                Name = "Lalo",
+                Race = "Golden",
+                Weight = 30,
+                Height = 20
+            }
+        };
     }
 }
