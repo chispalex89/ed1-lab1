@@ -54,6 +54,7 @@ namespace Laboratorio_1.Helpers
         {
             new AnimalCrossingModel
             {
+                Id= 1,
                 Name = "Kelly",
                 Fruit = "Peach",
                 Insects = 48,

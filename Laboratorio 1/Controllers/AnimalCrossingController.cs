@@ -18,7 +18,7 @@ namespace Laboratorio_1.Controllers
         // GET: AnimalCrossingController/Details/5
         public ActionResult Details(int id)
         {
-            var model = Data.Instance.animalcrossingList.Find(animalcrossing => animalcrossing.Emotions == id);
+            var model = Data.Instance.animalcrossingList.Find(player => player.Id == id);
             return View(model);
         }
 
@@ -37,8 +37,9 @@ namespace Laboratorio_1.Controllers
             {
                 var response = AnimalCrossingModel.Save(new AnimalCrossingModel
                 {
+                    Id= int.Parse(collection["Id"]),
                     Name = collection["Name"],
-                    Fruit = collection["Name"],
+                    Fruit = collection["Fruit"],
                     Insects = int.Parse(collection["Insects"]),
                     Animals = int.Parse(collection["Animals"]),
                     Tricks = int.Parse(collection["Tricks"]),
@@ -61,7 +62,7 @@ namespace Laboratorio_1.Controllers
         // GET: AnimalCrossingController/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = Data.Instance.animalcrossingList.Find(Island => Island.Emotions == id);
+            var model = Data.Instance.animalcrossingList.Find(player => player.Id == id);
             return View(model);
         }
 
@@ -83,7 +84,7 @@ namespace Laboratorio_1.Controllers
         // GET: AnimalCrossingController/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = Data.Instance.animalcrossingList.Find(Island => Island.Emotions == id);
+            var model = Data.Instance.animalcrossingList.Find(player => player.Id == id);
             return View();
         }
 
