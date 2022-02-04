@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Equipo)
+                @Html.DisplayNameFor(model => model.Team)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Base)
+                @Html.DisplayNameFor(model => model.Center)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Escolta)
+                @Html.DisplayNameFor(model => model.PowerForward)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Alero)
+                @Html.DisplayNameFor(model => model.SmallForward)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AlaPivot)
+                @Html.DisplayNameFor(model => model.PointGuard)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pivot)
+                @Html.DisplayNameFor(model => model.ShootingGuard)
             </th>
             <th></th>
         </tr>
@@ -37,27 +37,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Equipo)
+                @Html.DisplayFor(modelItem => item.Team)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Base)
+                @Html.DisplayFor(modelItem => item.Center)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Escolta)
+                @Html.DisplayFor(modelItem => item.PowerForward)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Alero)
+                @Html.DisplayFor(modelItem => item.SmallForward)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AlaPivot)
+                @Html.DisplayFor(modelItem => item.PointGuard)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pivot)
+                @Html.DisplayFor(modelItem => item.ShootingGuard)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Equipo }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Equipo }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Equipo })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Team }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Team }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Team })
             </td>
         </tr>
 }

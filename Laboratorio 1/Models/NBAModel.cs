@@ -9,13 +9,18 @@ namespace Laboratorio_1.Models
 {
     public class NBAModel
     {
-        [Range(1, 30)]
-        public int Equipo { get; set; }
-        public string Base { get; set; }
-        public string Escolta { get; set; }
-        public string Alero { get; set; }
-        public string AlaPivot { get; set; }
-        public string Pivot { get; set; }
+        [MaxLength(50)]
+        public string Team { get; set; }
+        [MaxLength(50)]
+        public string Center { get; set; }
+        [MaxLength(50)]
+        public string PowerForward { get; set; }
+        [MaxLength(50)]
+        public string SmallForward { get; set; }
+        [MaxLength(50)]
+        public string PointGuard { get; set; }
+        [MaxLength(50)]
+        public string ShootingGuard { get; set; }
         public static bool Save(NBAModel model)
         {
             Data.Instance.nbaList.Add(model);

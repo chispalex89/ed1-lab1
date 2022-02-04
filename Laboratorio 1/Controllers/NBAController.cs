@@ -15,9 +15,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: NBAController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var model = Data.Instance.nbaList.Find(nba => nba.Equipo == id);
+            var model = Data.Instance.nbaList.Find(nba => nba.Team == id);
             return View(model);
         }
 
@@ -36,12 +36,12 @@ namespace Laboratorio_1.Controllers
             {
                 var response = NBAModel.Save(new NBAModel
                 {
-                    Equipo = int.Parse(collection["Equipo"]),
-                    Base = collection["Base"],
-                    Escolta = collection["Escolta"],
-                    Alero = collection["Alero"],
-                    AlaPivot = collection["AlaPivot"],
-                    Pivot = collection["Pivot"],
+                    Team = collection["Equipo"],
+                    Center = collection["Base"],
+                    PowerForward = collection["Escolta"],
+                    SmallForward = collection["Alero"],
+                    PointGuard = collection["AlaPivot"],
+                    ShootingGuard = collection["Pivot"],
                 });
 
                 if(response)
@@ -78,9 +78,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: NBAController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            var model = Data.Instance.nbaList.Find(nba => nba.Equipo == id);
+            var model = Data.Instance.nbaList.Find(nba => nba.Team == id);
             return View();
         }
 

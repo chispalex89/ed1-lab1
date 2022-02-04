@@ -41,12 +41,12 @@ namespace Laboratorio_1.Helpers
         {
             new NBAModel
             {
-                Equipo = 1,
-                Base = "James Harden",
-                Escolta = "Blake Griffin",
-                Alero = "Kyrie Irving",
-                AlaPivot = "Kevin Durant",
-                Pivot = "Nicolas Claxton"
+                Team = "Brooklyn Nets",
+                Center = "James Harden",
+                PowerForward = "Blake Griffin",
+                SmallForward = "Kyrie Irving",
+                PointGuard = "Kevin Durant",
+                ShootingGuard = "Nicolas Claxton"
             }
         };
     }
