@@ -1,12 +1,12 @@
 ﻿@model Laboratorio_1.Models.PeliculaModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edición";
 }
 
-<h1>Edit</h1>
+<h1>Edición de la Película Núm. @Html.DisplayFor(modelo => Model.ID)</h1>
 
-<h4>PeliculaModel</h4>
+<h4>@Html.DisplayFor(modelo => Model.ID)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">

@@ -19,9 +19,9 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: PeliculasController/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.Nombre == id);
+            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.ID == id);
             return View(modelo);
         }
 
@@ -46,7 +46,7 @@ namespace Laboratorio_1.Controllers
                     Duracion = int.Parse(collection["Duracion"]),
                     Genero = collection["Genero"],
                     Director = collection["Director"],
-                    Disponibilidad = Convert.ToBoolean(collection["Disponibilidad"])
+                    Disponibilidad = bool.Parse(collection["Disponibilidad"])
                 });
                 return RedirectToAction(nameof(Index));
             }
@@ -59,7 +59,8 @@ namespace Laboratorio_1.Controllers
         // GET: PeliculasController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var pelicula = DataPelicula.Instancia.lPeliculas.Find(pelicula => pelicula.ID == id);
+            return View(pelicula);
         }
 
         // POST: PeliculasController/Edit/5
@@ -69,8 +70,20 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
-                
-                return RedirectToAction(nameof(Index));
+                var validacion = PeliculaModel.Editar(id, new PeliculaModel
+                {
+                    Nombre = collection["Nombre"],
+                    AñoPublicacion = int.Parse(collection["AñoPublicacion"]),
+                    Duracion = int.Parse(collection["Duracion"]),
+                    Genero = collection["Genero"],
+                    Director = collection["Director"],
+                    Disponibilidad = bool.Parse(collection["Disponibilidad"])
+                });
+                if (validacion)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
@@ -79,10 +92,11 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: PeliculasController/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.Nombre == id);
-            return View();
+            var modelo = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.ID == id);
+            
+            return View(modelo);
         }
 
         // POST: PeliculasController/Delete/5
@@ -92,6 +106,8 @@ namespace Laboratorio_1.Controllers
         {
             try
             {
+                var model = DataPelicula.Instancia.lPeliculas.Find(PeliculaModel => PeliculaModel.ID == id);
+                PeliculaModel.Borrar(model);
                 return RedirectToAction(nameof(Index));
             }
             catch
