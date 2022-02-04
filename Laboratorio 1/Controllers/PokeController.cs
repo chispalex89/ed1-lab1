@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Pokem = Lab_1.Help.Pokem;
 
 namespace Lab_1.Controllers
 {
@@ -21,7 +22,7 @@ namespace Lab_1.Controllers
         // GET: PokeController/Details/5
         public ActionResult Details(int id)
         {
-            var model = Data.Instance.pokemonlist.Find(poke => poke.Gene == id);
+            var model = Data.Instance.pokemonlist.Find(poke => poke.Id == id);
             return View(model);
         }
 
@@ -45,7 +46,7 @@ namespace Lab_1.Controllers
                     Type = collection["Type"],
                     Gender = collection["Gender"],
                 }));
-                if (response)
+                if ((bool)response)
                 {
                     return RedirectToAction(nameof(Index));
                 }
@@ -61,7 +62,7 @@ namespace Lab_1.Controllers
         // GET: PokeController/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = Data.Instance.pokemonlist.Find(poke => poke.Gene == id);
+            var model = Data.Instance.pokemonlist.Find(poke => poke.Id == id);
             return View(model);
         }
 
