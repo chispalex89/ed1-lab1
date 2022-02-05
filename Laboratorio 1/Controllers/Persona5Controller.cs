@@ -56,18 +56,29 @@ namespace Laboratorio_1.Controllers
         }
 
         // GET: Persona5Controller/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var persona5 = DataPersona5.Instance.Persona5List.Find(persona5 => persona5.Id == id);
+            return View(persona5);
         }
 
         // POST: Persona5Controller/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, IFormCollection collection)
         {
             try
             {
+                Persona5Model.Edit(id, new Persona5Model
+                {
+                    Name = collection["Name"],
+                    Strenght = int.Parse(collection["Strenght"]),
+                    Magic = int.Parse(collection["Magic"]),
+                    EnduranceOrVitality = int.Parse(collection["EnduranceOrVitality"]),
+                    Agility = int.Parse(collection["Agility"]),
+                    Luck = int.Parse(collection["Luck"]),
+                });
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,7 +91,7 @@ namespace Laboratorio_1.Controllers
         public ActionResult Delete(string id)
         {
             var model = DataPersona5.Instance.Persona5List.Find(Persona5 => Persona5.Id == id);
-            return View();
+            return View(model);
         }
 
         // POST: Persona5Controller/Delete/5
