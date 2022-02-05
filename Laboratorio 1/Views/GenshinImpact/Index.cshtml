@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Laboratorio_1.Models.GenshinImpactModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Element)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weapon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseAttack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseDefense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseHP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rarity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Element)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weapon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseAttack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseDefense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseHP)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=item.Id}) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
