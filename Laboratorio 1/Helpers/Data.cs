@@ -37,4 +37,30 @@ namespace Laboratorio_1.Helpers
             }
         };
     }
+    public class DataDBZ
+    {
+        private static DataDBZ instanceDBZ = null;
+        public static DataDBZ InstanceDBZ
+        {
+            get
+            {
+                if(instanceDBZ == null)
+                {
+                    instanceDBZ = new DataDBZ();
+                }
+                return instanceDBZ;
+            }
+        }
+        public List<DBZModel> dbzList = new List<DBZModel>
+        {
+            new DBZModel
+            {
+                Id = 1,
+                Name = "Goku",
+                NPower = 1000,
+                SpecialAttack = "Kame Kame Ha"
+                
+            }
+        };
+    }
 }
